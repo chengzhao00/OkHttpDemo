@@ -9,7 +9,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.example.administrator.okhttpdemo.http.OkHttpClientManager;
 import com.squareup.okhttp.Request;
 
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ImageView imageView = (ImageView) findViewById(R.id.iv_test);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -35,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         context = this;
+        //添加glide用法具体详情 查看这个博客 http://jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0327/2650.html
+        String imageurl = "http://hipubdev-10006628.file.myqcloud.com/admin/images/dcb28308-1219-4646-b345-ef9ebbcae8da.jpg";
+        Glide.with(this).load(imageurl).into(imageView);
         getData();
     }
     private void getData(){
