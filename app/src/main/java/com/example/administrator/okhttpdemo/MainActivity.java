@@ -42,21 +42,16 @@ public class MainActivity extends AppCompatActivity {
         Map<String,String> params = new HashMap<>();
         params.put("username","asdf");
         params.put("password", "asdf");
+        //post网络请求  //泛型直接封装进去Gson进行解析
         OkHttpClientManager.postAsyn(context, url, params, new OkHttpClientManager.ResultCallback<UserBean>() {
             @Override
             public void onError(Request request, Exception e) {
-
+                //网络数据错误，解析错误
             }
 
             @Override
             public void onResponse(UserBean response) {
-
-            }
-
-
-            @Override
-            public void onAfter() {
-
+                //数据请求成功 返回解析完毕的对象
             }
         });
     }
@@ -64,19 +59,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
